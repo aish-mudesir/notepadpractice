@@ -1,33 +1,29 @@
-import { BrowserRouter as Router, Link, Routes, Route } from "react-router-dom";
-import "./App.css";
-import Home from "./components/Home";
-import Products from "./components/products/Products";
-import Login from "./components/Login";
-import Search from "./components/products/Search";
-import AddProduct from "./components/products/AddProduct";
-import ProductDisplay from "./components/products/ProductDisplay";
-import ListProducts from "./components/products/ListProducts";
+// App.js
+import React from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import Header from "./components/Header";
+import AddNote from "./components/AddNote";
 
 function App() {
   return (
     <Router>
-      <nav>
-        <Link to="/"> Home </Link>
-        <Link to="login"> Login </Link>
-        <Link to="products/search"> Products </Link>
-      </nav>
       <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="login" element={<Login />} />
-        <Route path="products" element={<Products />}>
-          <Route path="search" element={<Search />} />
-          <Route path="list" element={<ListProducts />} />
-          <Route path="add" element={<AddProduct />} />
-          <Route path=":id" element={<ProductDisplay />} />
-        </Route>
+        <Route path="/" element={<Header />} />
+        <Route path="/add-note" element={<AddNote />} />
+        <Route path="/add-note/:id?" element={<AddNote />} />
       </Routes>
     </Router>
   );
 }
 
 export default App;
+
+
+
+
+
+
+
+
+
+
