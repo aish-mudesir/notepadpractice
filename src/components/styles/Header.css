@@ -67,7 +67,7 @@
     }
     
     .note-item {
-      background-color: #f7f7f7;
+      background-color: #b49e9e;
       padding: 10px;
       margin-bottom: 5px;
       margin-top: 15%;
@@ -76,7 +76,7 @@
       cursor: pointer;
     }
     .note-item:hover {
-      background-color: #e0e0e0; /* Change background color on hover */
+      background-color: #836666; /* Change background color on hover */
     }
 
     .note-details-container {
@@ -108,17 +108,7 @@
     .edit-icon {
       color: #007bff; /* Adjust the color as needed */
     }
-    /* Header.css */
-.left-content {
-      display: flex;
-      flex-direction: column;
-      margin-top: 20px; /* Adjust the margin as needed */
-      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Add box shadow */
-      padding: 20px; /* Add padding to create space around the content */
-    }
-    
-    
-    
+
     .add-note-icon {
       margin-left: 20px; /* Adjust margin as needed */
       margin-top: 10px; /* Adjust margin as needed */
@@ -133,6 +123,108 @@
     .pen-icon {
       font-size: 1.5rem; /* Adjust size as needed */
     }
+    .left-tag {
+      display: flex;
+      column-gap: 55%;
+      margin-top: 2px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Add box shadow */
+      padding: 20px;      
+    }
+    /* .note-adder {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-40%, -40%);
+      background-color: #dfcece;
+      padding: 20px; */
+      /* border-radius: 8px; */
+      /* box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); */
+    /* } */
+    .notes-container {
+      display: flex;
+      justify-content: space-between; /* Align items to the start and end of the container */
+    }
+    
+    .left-sidebar {
+      width: 30%;
+      padding: 20px;
+      background-color: #f0f0f0;
+    }
+    
+    .saved-notes {
+      width: 70%;
+      padding: 20px;
+    }
+    
+    .note-item {
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      padding: 10px;
+      margin-bottom: 10px;
+    }
+    
+    .left-tag {
+      /* display: flex; */
+      /* justify-content: flex-start; Align items to the start (left) of the container */
+      align-items: center;
+      margin-bottom: 10px;
+      margin-left: 50px;
+      position: fixed;
+      top: 20%;
+      left: 10%;
+      transform: translate(-50%, -50%);
+      background-color: #dfcece;
+      padding: 20px;
+      width: 210px;
+      z-index: 999;
+    }
+    
+    .pen-icon-container {
+      margin-right: 10px; /* Add a little gap between the pen icon container and the saved notes */
+    }
+    
+    .pen-icon {
+      font-size: 24px;
+    }
+    .add-note-form {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .saved-notes {
+      width: calc(100% - 40px); /* Adjust the width of the saved notes section */
+      /* Subtract the width of the pen icon container and the margin space */
+      /* padding: 20px; */
+      padding-top: 10px; 
+      position: fixed;
+      top: 10%;
+      left: 10%;
+    }
+    .add-note-container {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-40%, -40%);
+      background-color: #dfcece;
+      padding: 20px;
+
+    }
+    .notes-list {
+      position: fixed;
+      top: 35%;
+      left: 5%;
+      width: 220px;
+    }
+    .saved {
+      position: fixed;
+      top: 25%;
+      left: 8%;
+      
+    }
+
+    
+    
     
         
     

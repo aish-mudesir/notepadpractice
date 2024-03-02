@@ -1,43 +1,35 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import { useNavigate } from 'react-router-dom'; // Import useHistory
+import React, { useState } from 'react';
+import { useParams } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom'; // Import useHistory from react-router
 
-function NoteDetails({ note, onUpdate, onDelete }) {
-  const navigate = useNavigate(); // Initialize useHistory
+function NoteDetails({ notes, onDelete }) {
+  const history = useHistory(); // Use useHistory
+  const { id } = useParams();
+  const [note, setNote] = useState(notes.find((note) => note.id === id));
 
-  const handleUpdate = () => {
-    onUpdate(note.id);
-    navigate.push('/add-note/' + note.id);
+  const handleEdit = () => {
+    navigate.push(`/edit-note/${id}`);
   };
 
   const handleDelete = () => {
-    onDelete(note.id);
-    history.push('/');
+    onDelete(id);
+    navigate.push('/notes');
   };
 
   return (
-    <div className="note-details-container">
-      <h2>Note Details</h2>
-      <div className="note-details">
-        <h3>{note.title}</h3>
-        <p>Written by: {note.author}</p>
-        <p>{note.body}</p>
-      </div>
-      <div className="note-actions">
-        <button onClick={handleUpdate}>Update</button>
-        <button onClick={handleDelete}>Delete</button>
-      </div>
+    <div>
+      <h1>Note Details</h1>
+      {note && (
+        <div>
+          <h3>{note.title}</h3>
+          <p>Author: {note.author}</p>
+          <p>{note.body}</p>
+          <button onClick={handleEdit}>Edit</button>
+          <button onClick={handleDelete}>Delete</button>
+        </div>
+      )}
     </div>
   );
 }
 
-NoteDetails.propTypes = {
-  note: PropTypes.object.isRequired,
-  onUpdate: PropTypes.func.isRequired,
-  onDelete: PropTypes.func.isRequired
-};
-
 export default NoteDetails;
-
-
-

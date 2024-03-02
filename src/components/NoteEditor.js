@@ -1,16 +1,16 @@
-// import React from 'react';
-// import { Link } from 'react-router-dom';
-// import "../components/styles/NoteEditor.css";
+// NoteDetails.js
+import React from 'react';
 
-// function NoteEditor() {
-//   return (
-//     <div className="note-editor-container">
-//       <h3>Notes</h3>
-//       <Link to="/edit">
-//         <span className="pen-icon" role="img" aria-label="Edit Note">✏️</span>
-//       </Link>
-//     </div>
-//   );
-// }
+function NoteDetails({ note }) {
+  // Implement editing functionality and delete button
+  return (
+    <div>
+      <h2>{note.title}</h2>
+      <p>Author: {note.author}</p>
+      {/* Add editing functionality and delete button here */}
+    </div>
+  );
+}
 
-// export default NoteEditor;
+export default NoteDetails;
+
