@@ -6,6 +6,7 @@ function Notes() {
   const [savedNotes, setSavedNotes] = useState([]);
   const [showAddNoteForm, setShowAddNoteForm] = useState(false);
   const [selectedNoteIndex, setSelectedNoteIndex] = useState(null);
+  const [formValues, setFormValues] = useState({ title: '', body: '', author: '' });
 
   const handleSaveNote = (newNote) => {
     setSavedNotes((prevNotes) => [...prevNotes, newNote]);
@@ -13,10 +14,19 @@ function Notes() {
 
   const handleToggleAddNoteForm = () => {
     setShowAddNoteForm(!showAddNoteForm);
+    setSelectedNoteIndex(null); // Reset selected note index when toggling form
+    setFormValues({ title: '', body: '', author: '' }); // Clear form values
   };
 
   const handleNoteClick = (index) => {
     setSelectedNoteIndex(index);
+    const selectedNote = savedNotes[index];
+    setFormValues({
+      title: selectedNote.title,
+      body: selectedNote.body,
+      author: selectedNote.author
+    });
+    setShowAddNoteForm(true); // Show the form when a saved note is clicked
   };
 
   const handleDeleteNote = (index) => {
@@ -24,7 +34,8 @@ function Notes() {
     setSelectedNoteIndex(null);
   };
 
-  const handleUpdateNote = (updatedNote) => {
+  const handleUpdateNote = () => {
+    const updatedNote = { ...formValues };
     setSavedNotes((prevNotes) =>
       prevNotes.map((note, i) => (i === selectedNoteIndex ? updatedNote : note))
     );
@@ -34,20 +45,13 @@ function Notes() {
   return (
     <div className="center-container">
       <div className="note-adder">
-        {selectedNoteIndex !== null ? (
-          <div className="note-details">
-            <h1>{savedNotes[selectedNoteIndex].title}</h1>
-            <p>{savedNotes[selectedNoteIndex].body}</p>
-            <p>Written by: {savedNotes[selectedNoteIndex].author}</p>
-            <div>
-              <button onClick={() => handleDeleteNote(selectedNoteIndex)}>
-                <FaTrash />
-              </button>
-              <button onClick={() => setSelectedNoteIndex(null)}>
-                Close
-              </button>
-            </div>
-          </div>
+        {selectedNoteIndex !== null || showAddNoteForm ? (
+          <AddNote
+            onSave={handleSaveNote}
+            onUpdate={handleUpdateNote}
+            onCancel={handleToggleAddNoteForm}
+            initialValues={formValues}
+          />
         ) : (
           <>
             <div className="left-tag">
@@ -59,7 +63,6 @@ function Notes() {
                 />
               </div>
             </div>
-            <AddNote onSave={handleSaveNote} />
           </>
         )}
         <h1 className="saved">Saved Notes</h1>
